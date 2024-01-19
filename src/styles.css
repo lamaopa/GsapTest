@@ -1,33 +1,18 @@
-.container{
-  display: flex;
-  flex-direction: column;
-  gap: 15em;
-  height: 170vh;
+body{
+  margin: 0;
+  padding: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.a{
-  background-color: blue;
-  height: 100px;
-  width: 100px;
+section{
+  height: 100vh;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 }
 
-.b{
-  background-color: orange;
-  height: 100px;
-  width: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.c{
-  background-color: pink;
-  height: 100px;
-  width: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+h2{
+  font-size: 22px;
+  text-align: center;
+  font-weight: 900;
 }
