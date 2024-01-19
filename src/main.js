@@ -1,5 +1,5 @@
-const  { innerHeight } = window;
-// const innerHeight = window.innerHeight;
+// const  { innerHeight } = window;
+const innerHeight = section.innerHeight;
 
 gsap.from("#zoomOut h2",{
     scale:50,
@@ -24,3 +24,5 @@ gsap.to("#zoomIn h2",{
         scrub : 3
     }
 })
+
+
