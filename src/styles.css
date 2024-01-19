@@ -1,25 +1,32 @@
-.box-a{
+.container{
+  display: flex;
+  flex-direction: column;
+  gap: 15em;
+  height: 170vh;
+}
+
+.a{
   background-color: blue;
-  height: 50px;
-  width: 50px;
+  height: 100px;
+  width: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.box-b{
+.b{
   background-color: orange;
-  height: 50px;
-  width: 50px;
+  height: 100px;
+  width: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.box-c{
+.c{
   background-color: pink;
-  height: 50px;
-  width: 50px;
+  height: 100px;
+  width: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
