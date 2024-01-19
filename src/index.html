@@ -3,25 +3,111 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Image Viewer</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Triangle and Box Animation Example</title>
+  <style>
+    /* Style pour créer un triangle */
+    .triangle {
+      width: 0;
+      height: 0;
+      border-left: 50px solid transparent;
+      border-right: 50px solid transparent;
+      border-bottom: 86.6px solid red; /* Hauteur du triangle = 50 * sqrt(3) / 2 */
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    /* Style pour créer un carré */
+    .box {
+      width: 50px;
+      height: 50px;
+      background-color: blue;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  </style>
 </head>
 <body>
- 
-<section id="zoomOut">
-  <h2>OUT</h2>
-</section>
-<section id="zoomIn">
-  <h2>IN</h2>
 
-</section>
+<!-- Container pour le carré -->
+<div class="box"></div>
+
+<!-- Container pour le triangle -->
+<div class="triangle"></div>
+
+<script src="https://unpkg.com/gsap@3.9.0/dist/gsap.min.js"></script>
 
 
+<!-- Script avec les objets GSAP et initialisation -->
+<script src="https://unpkg.com/gsap@3.9.0/dist/gsap.min.js"></script>
+<script>
+  // Premier objet pour animer le triangle
+  const myObjectTriangle = {
+    tl: null, // Propriété pour la timeline GSAP
+    init: function(element) {
+      this.DOMElement = element; // Stocke l'élément DOM passé en paramètre
+      this.createTimeline(); // Appelle la méthode pour créer la timeline GSAP
+    },
+    createTimeline: function() {
+      this.tl = gsap.timeline({
+        repeat: -1,          // Répétition infinie
+        yoyo: true,          // Retour en arrière à la fin de chaque itération
+        defaults: {
+          duration: 1,        // Durée par défaut pour chaque animation
+          ease: "power2.inOut" // Type d'easing par défaut
+        }
+      });
 
-  <script src="main.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollTrigger.min.js"></script>
-  
+      // Ajout de quatre animations à la timeline pour déplacer le triangle
+      this.tl.to(this.DOMElement, { x: 200 })
+             .to(this.DOMElement, { y: 200 })
+             .to(this.DOMElement, { x: 0 })
+             .to(this.DOMElement, { y: 0 });
+
+      return this.tl; // Retourne la timeline créée
+    }
+  };
+
+  // Deuxième objet pour animer le carré
+  const myObjectBox = {
+    tl: null, // Propriété pour la timeline GSAP
+    init: function(element) {
+      this.DOMElement = element; // Stocke l'élément DOM passé en paramètre
+      this.createTimeline(); // Appelle la méthode pour créer la timeline GSAP
+    },
+    createTimeline: function() {
+      this.tl = gsap.timeline({
+        repeat: -1,          // Répétition infinie
+        yoyo: true,          // Retour en arrière à la fin de chaque itération
+        defaults: {
+          duration: 1,        // Durée par défaut pour chaque animation
+          ease: "power2.inOut" // Type d'easing par défaut
+        }
+      });
+
+      // Ajout d'une animation à la timeline pour faire tourner le carré
+      this.tl.to(this.DOMElement, { rotation: 360, duration: 2, repeat: -1, ease: "none" });
+
+      return this.tl; // Retourne la timeline créée
+    }
+  };
+
+  // Création de l'élément div pour le triangle
+  const triangleElement = document.querySelector('.triangle');
+  // Initialisation de myObjectTriangle pour animer le triangle
+  myObjectTriangle.init(triangleElement);
+
+  // Création de l'élément div pour le carré
+  const boxElement = document.querySelector('.box');
+  // Initialisation de myObjectBox pour animer le carré
+  // myObjectBox.init(boxElement);
+  myObjectTriangle.init(boxElement)
+  myObjectBox.init(boxElement)
+
+</script>
+
 </body>
-
 </html>
