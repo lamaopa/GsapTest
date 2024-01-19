@@ -1,0 +1,26 @@
+.box-a{
+  background-color: blue;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.box-b{
+  background-color: orange;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.box-c{
+  background-color: pink;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
