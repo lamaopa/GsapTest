@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container" id="text-container">
+    
+    <h4 class="text">La mer offre un refuge paisible pour ceux qui </h4>
+    <h4 class="text">Se perdre dans l'océan, c'est trouver la liberté, une aventure .</h4>
+    <h4 class="text">Le sable chaud s'étend à perte de vue, invitant </h4>
+    <h4 class="text">Le surf devient une danse harmonieuse avec l'océan, une expression </h4>
+    <h4 class="text">La brise marine caresse le visage du surfeur passionné, </h4>
+   
+  </div>
+  </div>
+  
+  <div class="img-container">
+    <img src="./image.png" alt="" class="image">
+  </div>
+    
+    
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script>
+
+    document.addEventListener("DOMContentLoaded", function() {
+      var textContainer = document.getElementById("text-container");
+      var texts = textContainer.getElementsByClassName("text");
+
+      // Appliquer des margins-left aléatoires entre les éléments <h4>
+      for (var i = 1; i < texts.length; i++) {
+        var randomMargin = Math.random() * 100 +55; 
+        texts[i].style.marginLeft = -randomMargin + "px";
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+    var textTimeline = gsap.timeline();
+
+    // Animation pour faire apparaître le texte
+    textTimeline.fromTo(".text", { y: -90 }, { y: "222", 
+      duration: 10, 
+      ease: "steps(20)", 
+      stagger: {
+        each: 4,
+        from: "random",
+      }
+    });
+
+    // Animation pour faire disparaître le texte
+    textTimeline.to(".text", {
+      color: "white",
+      duration: 1, // Ajustez la durée selon vos besoins
+    });
+  });
+  </script>
+</body>
+</html>

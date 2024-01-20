@@ -9,7 +9,9 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
+  
 }
+
 
 h2 {
   font-size: 22px;
@@ -18,27 +20,19 @@ h2 {
 }
 
 img {
-  height: 50em;
+  height: 50vh; /* Hauteur de l'écran */
+  
+  
 }
 
 /*-------------------------------- */
-
-
 
 body {
   margin: 0;
 
   font-family: "Times New Roman", Times, serif;
-  overflow: hidden; /* Empêcher le défilement vertical */
-}
-
-.image {
-  position: absolute;
-  z-index: 1;
-  
-  height: 100%;
-  object-fit: cover;
-}
+  /* overflow: hidden; /* Empêcher le défilement vertical */
+} */
 
 .container {
   display: flex;
@@ -47,6 +41,7 @@ body {
   position: absolute;
   z-index: 2;
   width: 100%;
+  max-width: 100vh;
   height: 100%; /* Hauteur du conteneur à 100% de la hauteur de la vue */
   font-family: "Times New Roman", Times, serif;
   line-height: 1.5;
@@ -55,17 +50,16 @@ body {
 
 .text {
   font-family: 'Libre Baskerville', serif;
-font-size: 10px;
+  font-size: 10px;
   background-color: white;
-  writing-mode: sideways-lr;
-  text-orientation: sideways;
+  writing-mode: vertical-lr;
+  transform: rotate(180deg);
   margin: 0 10px;
   padding: 6px 6px;
+  border-radius: 25px;
 }
 
-
-.img-container{
+.img-container {
   display: flex;
   justify-content: center;
-  bottom: 20px;
 }
