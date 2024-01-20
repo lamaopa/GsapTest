@@ -28,21 +28,26 @@ img {
   z-index: 1;
   height: 18em;
 }
+.container {
+  position: relative;
+}
 
-.text {
+.image {
+  position: absolute;
+  z-index: 1;
+  height: 18em;
+}
+
+.container-text {
   position: absolute;
   z-index: 2;
-  font-size: smaller;
-  background-color: white;
   width: 70%;
   font-family: "Times New Roman", Times, serif;
-  line-height: 1.5; /* Ajustez cette valeur selon vos préférences */
+  line-height: 1.5;
 }
 
-.un {
-  top: 0;
-}
-
-.deux {
-  top: 2em; /* Ajustez cette valeur pour définir la distance verticale entre les deux textes */
+.text {
+  font-size: smaller;
+  background-color: white;
+  margin: 0; /* Remove default margin for <h4> */
 }
