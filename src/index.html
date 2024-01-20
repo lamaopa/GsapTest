@@ -5,20 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="container" id="text-container">
-    <div class="container-text">
-      <h4 class="text">Lorem ipsum dolor sit aincidunt reum asperiores fuga?</h4>
-      <h4 class="text">Lorem, ipsum dolor sit amet consectetur .</h4>
-      <h4 class="text">Lorem, ipsum dolor sit amet consectetur .</h4>
-      <h4 class="text">Lorem, ipsum dolor sit amet consectetur .</h4>
-      <h4 class="text">Lorem, ipsum dolor sit amet consectetur .</h4>
-      <h4 class="text">Lorem, ipsum dolor sit amet consectetur .</h4>
-      <h4 class="text">Lorem, ipsum dolor sit amet consectetur .</h4>
-    </div>
+    <h4 class="text">Un vent frais souffle doucement sur la plage déserte, emportant avec lui le parfum salé de l'océan.</h4>
+    <h4 class="text">Les vagues dansent en rythme avec le coucher de soleil, créant un spectacle magique et apaisant pour tous l</h4>
+    <h4 class="text">Le surfeur glisse avec élégance sur la crête de la vague, maîtrisant chaque mouvement avec une grâce </h4>
+    <h4 class="text">Le bruit apaisant de l'océan remplit l'air, créant une symphonie relaxante qui calme l'âme.</h4>
+    <h4 class="text">Seul le surfeur comprend la véritable connexion avec la mer, ressentant chaque pulsation de l'océan .</h4>
+    <h4 class="text">Les mouettes planent au-dessus, observant la scène avec curiosit</h4>
+    <h4 class="text">Chaque vague raconte une histoire différente, portant les secrets du passé et de l'avenir à travers le co</h4>
+    <h4 class="text">Le sable chaud s'étend à perte de vue, invitant </h4>
+    <h4 class="text">Le surf devient une danse harmonieuse avec l'océan, une expression </h4>
+    <h4 class="text">La brise marine caresse le visage du surfeur passionné, </h4>
+    <h4 class="text">La mer offre un refuge paisible pour ceux qui </h4>
+    <h4 class="text">Se perdre dans l'océan, c'est trouver la liberté, une aventure .</h4>
+  </div>
+  
+  <div class="img-container">
+    <img src="./image.png" alt="" class="image">
+  </div>
     
-    <img src="IMG_0184.JPG" alt="" class="image">
+    
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -27,23 +38,33 @@
     document.addEventListener("DOMContentLoaded", function() {
       var textContainer = document.getElementById("text-container");
       var texts = textContainer.getElementsByClassName("text");
-      /* autre alternative : var textElements = document.querySelectorAll(".text"); dans ce cas pas besoin de textContainer */
 
-      // Appliquer des margins-bottom aléatoires entre les éléments <h4>
+      // Appliquer des margins-left aléatoires entre les éléments <h4>
       for (var i = 1; i < texts.length; i++) {
-        var randomMargin = Math.random() * 30; // Ajustez la plage selon vos préférences
-        texts[i].style.marginBottom = randomMargin + "px";
+        var randomMargin = Math.random() * 100 +45; 
+        texts[i].style.marginLeft = -randomMargin + "px";
       }
     });
 
-    gsap.fromTo(".text", { x: 300 }, { x: 0, 
+    document.addEventListener("DOMContentLoaded", function() {
+    var textTimeline = gsap.timeline();
+
+    // Animation pour faire apparaître le texte
+    textTimeline.fromTo(".text", { y: -400 }, { y: "222", 
       duration: 20, 
       ease: "steps(20)", 
-      stagger:{
-        each:3,
-        from:"random"
+      stagger: {
+        each: 3,
+        from: "random",
       }
     });
+
+    // Animation pour faire disparaître le texte
+    textTimeline.to(".text", {
+      color: "white",
+      duration: 1, // Ajustez la durée selon vos besoins
+    });
+  });
   </script>
 </body>
 </html>
