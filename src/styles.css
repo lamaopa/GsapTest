@@ -41,7 +41,7 @@ img {
 .container-text {
   position: absolute;
   z-index: 2;
-  width: 70%;
+  width: 100%;
   font-family: "Times New Roman", Times, serif;
   line-height: 1.5;
 }
@@ -49,5 +49,6 @@ img {
 .text {
   font-size: smaller;
   background-color: white;
-  margin: 0; /* Remove default margin for <h4> */
+  width: 100%;
+  margin: 0;
 }
