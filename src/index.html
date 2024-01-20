@@ -29,13 +29,13 @@
 
       // Appliquer des margins-bottom aléatoires entre les éléments <h4>
       for (var i = 1; i < texts.length; i++) {
-        var randomMargin = Math.random() * 20; // Ajustez la plage selon vos préférences
+        var randomMargin = Math.random() * 30; // Ajustez la plage selon vos préférences
         texts[i].style.marginBottom = randomMargin + "px";
       }
     });
 
     gsap.fromTo(".text", { x: 300 }, { x: 0, 
-      duration: 10, 
+      duration: 20, 
       ease: "steps(20)", 
       stagger:{
         each:3,
