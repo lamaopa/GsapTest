@@ -129,3 +129,19 @@ window.addEventListener('resize', () => {
 });
 
 
+const tl = gsap.timeline({
+    // Add timeline options or variables here
+});
+
+gsap.timeline({
+    scrollTrigger: {
+        trigger: selector, // Add your trigger element selector
+        start: 'top center', // Set the start position
+        end: 'bottom center', // Set the end position
+        scrub: true, // Enable scrubbing
+        markers: true, // Display markers for debugging
+    }
+})
+.add(tl);
+
+G
