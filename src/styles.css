@@ -28,10 +28,21 @@ img {
   z-index: 1;
   height: 18em;
 }
+
 .text {
   position: absolute;
   z-index: 2;
   font-size: smaller;
   background-color: white;
-  width: 100%;
+  width: 70%;
+  font-family: "Times New Roman", Times, serif;
+  line-height: 1.5; /* Ajustez cette valeur selon vos préférences */
+}
+
+.un {
+  top: 0;
+}
+
+.deux {
+  top: 2em; /* Ajustez cette valeur pour définir la distance verticale entre les deux textes */
 }
