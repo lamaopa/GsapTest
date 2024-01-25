@@ -67,27 +67,47 @@ img {
 
 /* slider */
 
-*{
+a {
+  color: currentColor;
+}
+
+body {
   margin: 0;
-  padding: 0;
+}
+
+#container {
+  align-items: center;
   box-sizing: border-box;
-}
-
-body, html{
-  width: 100vw;
+  display: flex;
   height: 100vh;
+  margin-left: 3rem;
   overflow: hidden;
+  width: 496px;
 }
 
-.logo{
+#credit {
+  bottom: 1rem;
+  color: gray;
+  left: 1rem;
   position: fixed;
-  padding: 1.5em;
 }
 
-.logo a {
-  text-decoration: none;
-  color: black;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-weight: 500;
+#grid {
+  column-gap: 3rem;
+  display: grid;
+  grid-auto-columns: 320px;
+  grid-auto-flow: column;
+  grid-template-rows: 180px;
+  width: fit-content;
+}
 
+.image {
+  height: 100%;
+  object-fit: cover;
+  transform-origin: center left;
+  width: 100%;
+}
+
+.image:not(:first-child) {
+  transform: scale(0.7);
 }
