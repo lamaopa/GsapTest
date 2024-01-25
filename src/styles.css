@@ -1,4 +1,4 @@
-body {
+/* body {
   margin: 0;
   padding: 0;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -20,19 +20,19 @@ h2 {
 }
 
 img {
-  height: 50vh; /* Hauteur de l'écran */
+  height: 50vh; 
   
   
-}
+} */
 
 /*-------------------------------- */
 
-body {
+/* body {
   margin: 0;
 
   font-family: "Times New Roman", Times, serif;
-  /* overflow: hidden; /* Empêcher le défilement vertical */
-} */
+  
+} 
 
 .container {
   display: flex;
@@ -62,9 +62,32 @@ body {
 .img-container {
   display: flex;
   justify-content: center;
-}
+} */
 
 
 /* slider */
 
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+body, html{
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.logo{
+  position: fixed;
+  padding: 1.5em;
+}
+
+.logo a {
+  text-decoration: none;
+  color: black;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 500;
+
+}
