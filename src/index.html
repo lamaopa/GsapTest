@@ -21,6 +21,41 @@
     </div>
   </div>
 
+  <div class="box2">
+    <h2 class="text4">Stay Tuned</h2>
+    <h2 class="text5">For more Videos</h2>
+    <h2 class="text6">Thanks for Watching </h2>
+  </div>
+
+
+  <section class='demo-text'>
+    <div class='wrapper text'>
+      ABCDEFGHIJKLMNOPQRSTUVWXYZ
+    </div>
+  </section>
+  
+
+  <section class="panel red">
+    <p>about idea</p>
+  </section>
+  <section class="panel orange">
+    TWO
+  </section>
+  <section class="panel purple">
+    THREE
+  </section>
+  <section class="panel green">
+    FOUR
+  </section>
+
+
+  
+  
+  
+  
+  
+  
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollTrigger.min.js"></script>
@@ -58,6 +93,86 @@ images.slice(1).forEach((image) => {
   tl.to(grid, { x: `-=${shift}` });
   tl.to(image, { scale: 1 }, '<');
 });
+
+
+ // source : https://codepen.io/theophileavoyne/pen/poNVyzE
+
+
+
+
+
+
+ /* Text */
+
+ gsap.timeline({
+  scrollTrigger: {
+    trigger: ".box2",
+    start: "center center",
+    end: "bottom top",
+    markers: true,
+    scrub: true,
+    pin: true
+  }
+})
+.from(".box2", { opacity: 0 })
+.from(".text4", { y: "50%", opacity: 0 })  // Adjusted for opacity and using a percentage
+.from(".text5", { y: "50%", opacity: 0 })  // Adjusted for opacity and using a percentage
+.from(".text6", { y: "50%", opacity: 0 })  // Adjusted for opacity and using a percentage
+
+
+
+
+
+
+
+ /* Panel */ 
+
+
+
+
+// scroll down arrow animation
+gsap.to(".arrow", {y: 12, ease: "power1.inOut", repeat: -1, yoyo: true});
+
+gsap.registerPlugin(ScrollTrigger);
+
+gsap.utils.toArray(".panel").forEach((panel, i) => {
+  ScrollTrigger.create({
+    trigger: panel,
+    start: "top top", 
+    pin: true, 
+    pinSpacing: false 
+  });
+});
+
+
+ScrollTrigger.create({
+  snap: 1 / 4 // snap whole page to the closest section!
+});
+
+// source : https://codepen.io/pei-fen/pen/rNLabvz
+
+
+ /* text band*/ 
+
+
+
+
+  gsap.utils.toArray('section').forEach((section, index) => {
+    const w = section.querySelector('.wrapper');
+    const [x, xEnd] = index % 2 ? ['100%', (w.scrollWidth - section.offsetWidth) * -1] : [w.scrollWidth * -1, 0];
+    gsap.fromTo(w, { x }, {
+      x: xEnd,
+      scrollTrigger: {
+        trigger: section,
+        scrub: 0.5,
+      },
+    });
+  });
+
+
+
+
+
 
 </script>
 
