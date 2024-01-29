@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Viewer</title>
+  <script src="./"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  
+ 
+  <div id="container">
+    <div id="grid">
+      <img class="image" src="https://images.unsplash.com/photo-1608694386216-f8d9ddeea8fa?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max">
+      <img class="image" src="https://images.unsplash.com/photo-1606300015207-d4e499ffca80?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max">
+      <img class="image" src="https://images.unsplash.com/photo-1608431478403-1176cd733208?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max">
+      <img class="image" src="https://images.unsplash.com/photo-1606471482752-da4b6c863a9b?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max">
+      <img class="image" src="https://images.unsplash.com/photo-1608665498789-de21b93d8410?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max">
+    </div>
+  </div>
+
+  <div class="box2">
+    <h2 class="text4">Stay Tuned</h2>
+    <h2 class="text5">For more Videos</h2>
+    <h2 class="text6">Thanks for Watching </h2>
+  </div>
+
+
+  <section class='demo-text'>
+    <div class='wrapper text'>
+      ABCDEFGHIJKLMNOPQRSTUVWXYZ
+    </div>
+  </section>
+  
+
+  <section class="panel red">
+    <p>about idea</p>
+  </section>
+  <section class="panel orange">
+    TWO
+  </section>
+  <section class="panel purple">
+    THREE
+  </section>
+  <section class="panel green">
+    FOUR
+  </section>
+
+
+  
+  
+  
+  
+  
+  
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollTrigger.min.js"></script>
+<script>
+
+// Enregistrement du plugin ScrollTrigger
+gsap.registerPlugin(ScrollTrigger);
+
+// Sélection des éléments du DOM
+const container = document.getElementById('container');
+const grid = document.getElementById('grid');
+const images = gsap.utils.toArray('.image');
+
+// Calcul du décalage (shift) pour le défilement
+const shift = 300
+
+
+// Configuration de la timeline GSAP avec ScrollTrigger
+const tl = gsap.timeline({
+  defaults: { ease: "none" },
+  scrollTrigger: {
+    end: `+=${(images.length - 1) * shift}`, 
+    pin: true,
+    scrub: true,
+    snap: {
+      duration: { min: 0.1, max: 0.3 },
+      snapTo: 1 / (images.length - 1),
+    },
+    trigger: container,
+  },
+});
+
+// Animation pour chaque image (à partir de la deuxième image)
+images.slice(1).forEach((image) => {
+  tl.to(grid, { x: `-=${shift}` });
+  tl.to(image, { scale: 1 }, '<');
+});
+
+
+ // source : https://codepen.io/theophileavoyne/pen/poNVyzE
+
+
+
+
+
+
+ /* Text */
+
+ gsap.timeline({
+  scrollTrigger: {
+    trigger: ".box2",
+    start: "center center",
+    end: "bottom top",
+    markers: true,
+    scrub: true,
+    pin: true
+  }
+})
+.from(".box2", { opacity: 0 })
+.from(".text4", { y: "50%", opacity: 0 })  
+.from(".text5", { y: "50%", opacity: 0 })  
+
+
+
+
+
+
+
+ /* Panel */ 
+
+
+
+
+// scroll down arrow animation
+
+
+gsap.registerPlugin(ScrollTrigger);
+
+gsap.utils.toArray(".panel").forEach((panel, i) => {
+  ScrollTrigger.create({
+    trigger: panel,
+    start: "top top", 
+    pin: true, 
+    pinSpacing: false 
+  });
+});
+
+
+ScrollTrigger.create({
+  snap: 1 / 4 // snap whole page to the closest section!
+});
+
+// source : https://codepen.io/pei-fen/pen/rNLabvz
+
+
+ /* text band*/ 
+
+
+
+
+gsap.utils.toArray('section').forEach((section, index) => {
+  // Pour chaque section trouvée dans le DOM
+  const w = section.querySelector('.wrapper'); // Sélectionne l'élément avec la classe 'wrapper' à l'intérieur de la section
+
+  // Définit les valeurs initiales et finales pour l'animation en fonction de l'indice de la section
+  const [x, xEnd] = index % 2 ? ['100%', (w.scrollWidth - section.offsetWidth) * -1] : [w.scrollWidth * -1, 0];
+
+  // Crée une animation de la propriété 'x' (position horizontale) de l'élément avec la classe 'wrapper'
+  // Utilise fromTo pour définir la valeur initiale et la valeur finale de 'x'
+  gsap.fromTo(w, { x }, {
+    x: xEnd, // Déplace l'élément à la position finale 'xEnd'
+    scrollTrigger: {
+      trigger: section, // Définit la section comme déclencheur de l'animation
+      scrub: 1, // Effet "scrubbing" pour une animation plus douce pendant le défilement
+    },
+  });
+});
+
+
+
+// a regarder : https://codepen.io/Juxtopposed/pen/NWExxja
+// https://codepen.io/GreenSock/pen/poLpxyN
+
+
+
+</script>
+
+</body>
+</html>
