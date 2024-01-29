@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Viewer</title>
+  <script src="./"></script>
+  <style>
+    *{ margin: 0; padding: 0; box-sizing: border-box;}
+.row{ display: flex; flex-wrap: wrap; padding: 15px 0; }
+.row .left{ width: 40%; }
+.row .right{ width: 60%; }
+.row + .row{ margin-top: 50px; }
+.pin-spacer {
+
+  width: 40% !important;
+}
+  </style>
+</head>
+<body>
+
+    <div style="background-color: green; height: 100vh; color: white; text-align: center; line-height: 50vh; font-size: 50px">Stacking section headers</div>
+    <div class="row-wrap">
+      <div class="row">
+        <div class="left" >
+          <h1>Pin 1</h1>
+        </div>
+        <div class="right">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+    
+          Why do we use it?
+          It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</div>
+      </div>
+      <div class="row">
+        <div class="left" >
+          <h1>Pin 2</h1>
+        </div>
+        <div class="right">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+    
+          Why do we use it?
+          It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</div>
+      </div>
+      <div class="row">
+        <div class="left" >
+          <h1>Pin 3</h1>
+        </div>
+        <div class="right">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+    
+          Why do we use it?
+          It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</div>
+      </div>
+    </div>
+    <div style="background-color: green; height: 100vh;"></div>
+   
+ <body>
+
+
+  
+
+ 
+ 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollTrigger.min.js"></script>
+<script>
+  
+  
+
+// Select all elements with the class 'row' and store them in an array
+const allTitles = gsap.utils.toArray('.row');
+
+// Array to store each title's offset
+let offsets;
+
+// Variable to store the total offset by adding up all the heights of the titles
+let totalOffset;
+
+// Function to calculate offsets and total offset, called on window resize and initially
+function calculateOffsets() {
+  totalOffset = 0;
+  offsets = allTitles.map(title => {
+    let prev = totalOffset;
+    // Add the height of the current title's h1 element to the total offset
+    totalOffset += title.querySelector("h1").offsetHeight;
+    // Return the previous total offset
+    return prev;
+  });
+}
+
+// Initial call to calculateOffsets
+calculateOffsets();
+
+// Event listener to recalculate offsets on window resize
+window.addEventListener("resize", calculateOffsets);
+
+// Loop through each title
+allTitles.forEach((title, i) => {
+  // Select the heading element inside the current title
+  let heading = title.querySelector(".left");
+
+  // Create a ScrollTrigger for each title
+  ScrollTrigger.create({
+    // Trigger point is the heading element
+    trigger: heading,
+
+    // The end trigger is set to ".row-wrap"
+    endTrigger: ".row-wrap",
+
+    // Start the animation when the top of the heading reaches a specific point
+    start: () => "top " + offsets[i],
+
+    // End the animation when the bottom of the last title reaches the total offset
+    end: () => "bottom " + totalOffset,
+
+    // Pin the heading during the animation
+    pin: heading,
+
+    // Disable spacing when pinned
+    pinSpacing: false
+  });
+});
+
+
+
+</script>
+</body>
+</html>

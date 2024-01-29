@@ -322,7 +322,7 @@ footer {height: 50vh}
 
 
 /* Angie */
-body {
+/* body {
   margin: 0;
   overflow-x: hidden;
 }
@@ -372,5 +372,47 @@ img {
   padding-left: 0.2em;
   padding-right: 0.2em;
   margin: 0;
+} */
+
+* {
+  padding: 0;
+  margin: 0;
+}
+header {
+  height: 200px;
+  background: orange;
+  font-size: 30px;
+  text-align: center;
+  padding-top: 30px;
+}
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+.section {
+  background: green;
+  overflow: hidden;
 }
 
+.items {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  list-style: none;
+}
+
+.item {
+  min-width: 200px;
+  height: 190px;
+  background: tomato;
+  margin-right: 20px;
+  line-height: 190px;
+  text-align: center;
+  font-size: 24px;
+  color: white;
+}
+.spacer {
+  height: 300px;
+  text-align: center;
+  line-height: 300px;
+}

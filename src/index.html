@@ -8,16 +8,74 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="all">
-    <div class="image-container">
-      <img class="image" src="https://www.furche.at/images/content/5676700-1920x1080c-Raute.jpg">
-    </div>
-    <div class="aboutWrapper">
-      <div class="about">
-        <h2>A propos fdsffsqdfdfdfdsfsdfs</h2>
-      </div>
 
-      <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, tempora. Quasi culpa debitis adipisci. Est numquam dolor voluptatibus, aspernatur quibusdam cupiditate hic laudantium qui molestias minima deserunt aliquid sit dolore.</h5>
+  <div class="page-wrapper">
+   
+  <section class="section">
+    <div class="container">
+      <ul class="items scrollx-section">
+        <li class="item">1</li>
+        <li class="item">2</li>
+        <li class="item">3</li>
+        <li class="item">4</li>
+        <li class="item">5</li>
+        <li class="item">6</li>
+        <li class="item">7</li>
+        <li class="item">8</li>
+        <li class="item">9</li>
+        <li class="item">10</li>
+        <li class="item">11</li>
+        <li class="item">12</li>
+        <li class="item">13</li>
+        <li class="item">14</li>
+        <li class="item">15</li>
+      </ul>
+    </div>
+  </section>
+    <div class="spacer">spacer</div>
+  <section class="section">
+    <div class="container">
+      <ul class="items scrollx-section">
+        <li class="item">1</li>
+        <li class="item">2</li>
+        <li class="item">3</li>
+      </ul>
+    </div>
+  </section>
+    <div class="spacer">spacer</div>
+    
+  <section class="section">
+    <div class="container">
+      <ul class="items scrollx-section">
+        <li class="item">1</li>
+        <li class="item">2</li>
+        <li class="item">3</li>
+        <li class="item">4</li>
+        <li class="item">5</li>
+        <li class="item">6</li>
+        <li class="item">7</li>
+        <li class="item">8</li>
+        <li class="item">9</li>
+        <li class="item">10</li>
+      </ul>
+    </div>
+  </section>
+    <div class="spacer">spacer</div>
+  <section class='next-sections'>
+    <div class="container">
+      <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsa cupiditate molestias reiciendis, commodi voluptatibus labore ducimus placeat earum exercitationem vel eius soluta numquam quia. Cupiditate nesciunt ut possimus est exercitationem.</p>
+     
+    <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsa cupiditate molestias reiciendis, commodi voluptatibus labore ducimus placeat earum exercitationem vel eius soluta numquam quia. Cupiditate nesciunt ut possimus est exercitationem.</p>
+      <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsa cupiditate molestias reiciendis, commodi voluptatibus labore ducimus placeat earum exercitationem vel eius soluta numquam quia. Cupiditate nesciunt ut possimus est exercitationem.</p>
+      <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsa cupiditate molestias reiciendis, commodi voluptatibus labore ducimus placeat earum exercitationem vel eius soluta numquam quia. Cupiditate nesciunt ut possimus est exercitationem.</p>
+      <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsa cupiditate molestias reiciendis, commodi voluptatibus labore ducimus placeat earum exercitationem vel eius soluta numquam quia. Cupiditate nesciunt ut possimus est exercitationem.</p>
+      <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsa cupiditate molestias reiciendis, commodi voluptatibus labore ducimus placeat earum exercitationem vel eius soluta numquam quia. Cupiditate nesciunt ut possimus est exercitationem.</p>
+      <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsa cupiditate molestias reiciendis, commodi voluptatibus labore ducimus placeat earum exercitationem vel eius soluta numquam quia. Cupiditate nesciunt ut possimus est exercitationem.</p>
+      <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsa cupiditate molestias reiciendis, commodi voluptatibus labore ducimus placeat earum exercitationem vel eius soluta numquam quia. Cupiditate nesciunt ut possimus est exercitationem.</p>
+    </div>
+  </section>
+    <div class="spacer">spacer</div>
+    <div class="spacer">spacer</div>
   </div>
 
 
@@ -34,31 +92,61 @@
 
 
 
-  const about = document.querySelector(".about");
+  // Sélectionne tous les éléments avec la classe "items" et stocke-les dans un tableau
+let items = gsap.utils.toArray(".items"),
 
-function getScrollAmount() {
-  let aboutWidth = about.scrollWidth;
-  return -(aboutWidth - window.innerWidth);
+// Sélectionne l'élément avec la classe "page-wrapper"
+pageWrapper = document.querySelector(".page-wrapper");
+
+// Pour chaque élément dans le tableau "items"
+items.forEach((container, i) => {
+
+// Sélectionne tous les éléments enfants avec la classe "item" à l'intérieur de l'élément "container"
+let localItems = container.querySelectorAll(".item"),
+
+  // Fonction qui calcule la distance entre le bord droit du dernier élément et le bord droit du conteneur
+  distance = () => {
+    let lastItemBounds = localItems[localItems.length-1].getBoundingClientRect(),
+        containerBounds = container.getBoundingClientRect();
+    return Math.max(0, lastItemBounds.right - containerBounds.right);
+  };
+
+// Anime le déplacement horizontal de l'élément "container"
+gsap.to(container, {
+// La propriété x est définie comme une fonction qui retourne la valeur négative de la distance calculée
+x: () => -distance(),
+
+// L'animation se fait sans effet de transition (linear)
+ease: "none",
+
+// Configuration du déclencheur de défilement (ScrollTrigger)
+scrollTrigger: {
+  // L'élément déclencheur est le "container" lui-même
+  trigger: container,
+
+  // L'animation commence lorsque le bord supérieur de l'élément "container" atteint le bord supérieur de la fenêtre
+  start: "top top",
+
+  // Le conteneur épinglé est "pageWrapper"
+  pinnedContainer: pageWrapper,
+
+  // La fin de l'animation est calculée dynamiquement en ajoutant la distance
+  end: () => "+=" + distance(),
+
+  // Épinglage de "pageWrapper" pendant l'animation
+  pin: pageWrapper,
+
+  // Effet "scrub" pour une animation basée sur le défilement
+  scrub: true,
+
+  // Recalcule les valeurs de tweens basées sur des fonctions lors du redimensionnement/actualisation de la page
+  invalidateOnRefresh: true 
 }
-
-gsap.to(about, {
-  x: getScrollAmount,
-  duration: 3,
-  ease: "none",
-  scrollTrigger: {
-    trigger: ".aboutWrapper",
-    start: 0, 
-    end: () => `+=${getScrollAmount() * -1}`,
-    pin: true,
-    scrub: 1,
-    pinSpacing: false, // Désactive la réserve d'espace lorsqu'épinglé
-    invalidateOnRefresh: true,
-    markers: true
-  }
+});
 });
 
 
+// source https://codepen.io/GreenSock/pen/PoyJpMY
 </script>
-
 </body>
 </html>
