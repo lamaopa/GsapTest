@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Viewer</title>
+ 
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .slider {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .slider-wrapper {
+      width: max-content;
+      padding: 0 150px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      gap: 100px;
+    }
+
+    .slide {
+      width: 500px;
+      height: 500px;
+      background: grey;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="slider">
+    <div class="slider-wrapper"> 
+
+      <div class="slide"> 
+        <img src="https://static.dw.com/image/59302591_702.jpg" alt="">
+      </div> 
+
+      <div class="slide"> 
+        <img src="https://media.vanityfair.fr/photos/6151dc113657cac85cbb2c43/16:9/w_2560%2Cc_limit/ABACA_781479_001.jpg" alt="">
+      </div> 
+
+      <div class="slide"> 
+        <img src="https://www.ft.com/__origami/service/image/v2/images/raw/http%3A%2F%2Fblogs.ft.com%2Fphoto-diary%2Ffiles%2F2015%2F12%2FMerkel_AP.jpg?source=next-article&fit=scale-down&quality=highest&width=2048&dpr=1" alt="">
+      </div>
+      
+      <div class="slide"> 
+        <img src="https://img.welt.de/img/vermischtes/mobile102072035/3571350807-ci16x9-w1200/merkelpinguine-x-DW-Politik-Stralsund-jpg.jpg" alt="">
+      </div> 
+
+      <div class="slide"> 
+        <img src="https://editorial01.shutterstock.com/preview-440/9765610e/0787d3c6/Shutterstock_9765610e.jpg" alt=""> 
+      </div> 
+
+    </div> 
+  </div> 
+  
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollTrigger.min.js"></script>
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+  
+    const slider = document.querySelector(".slider");
+    const sliderWrapper = document.querySelector(".slider-wrapper");
+  
+    let maxScroll = sliderWrapper.offsetWidth - window.innerWidth;
+  
+    gsap.to(".slide", { // Utilisez ".slide" au lieu de "slide"
+      x: -maxScroll,
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".slider",
+        end: 3000,
+        scrub: 1,
+      },
+    });
+  </script>
+  
+</body>
+</html>

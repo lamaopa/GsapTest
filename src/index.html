@@ -6,45 +6,61 @@
   <title>Image Viewer</title>
  
   <style>
-   
+    body {
+      overscroll-behavior: none;
+      height: 100vh;
+      margin: 0; 
+      
+    }
+    .header{
+      height: 20em;
+    }
+    .container {
+      overscroll-behavior: none;
+      width: 600%;
+      height: 100vh;
+      display: flex;
+  
+    }
 
+    .section {
+      width: 30vw;
+      height: 40vh;
+    padding-right: 2rem;
+    padding-top: 4em;
+    box-sizing: content-box;
+     
+      
+    }
+
+    
+    img{
+      width:100%;
+    max-height: 40vh;
+    object-fit: cover;
+    }
 
   </style>
 </head>
 <body>
-
-  <div class="slider">
-    <div class="slider-wrapper"> 
-
-      <div class="slide"> 
-        <img src="https://static.dw.com/image/59302591_702.jpg" alt="" >
-      </div> 
-
-      <div class="slide"> 
-        <img src="https://media.vanityfair.fr/photos/6151dc113657cac85cbb2c43/16:9/w_2560%2Cc_limit/ABACA_781479_001.jpg" alt="" >
-      </div> 
-
-      <div class="slide"> 
-        <img src="https://static.dw.com/image/59302591_702.jpg" alt="" >
-      </div> 
-
-      <div class="slide"> 
-        <img src="https://www.ft.com/__origami/service/image/v2/images/raw/http%3A%2F%2Fblogs.ft.com%2Fphoto-diary%2Ffiles%2F2015%2F12%2FMerkel_AP.jpg?source=next-article&fit=scale-down&quality=highest&width=2048&dpr=1" alt="">
-      </div>
-      
-      <div class="slide"> 
-        <img src="https://img.welt.de/img/vermischtes/mobile102072035/3571350807-ci16x9-w1200/merkelpinguine-x-DW-Politik-Stralsund-jpg.jpg" alt="" >
-      </div> 
-
-      <div class="slide"> 
-        <img src="https://editorial01.shutterstock.com/preview-440/9765610e/0787d3c6/Shutterstock_9765610e.jpg" alt=""> 
-      </div> 
-
-
-    </div> 
-  </div> 
-  
-
+<!-- <div class="header"></div> -->
+  <div class="container">
+    <section class="section un">
+      <img src="https://editorial01.shutterstock.com/preview-440/9765610e/0787d3c6/Shutterstock_9765610e.jpg" alt="">
+    </section>
+    <section class="section deux">
+      <img src="https://img.welt.de/img/vermischtes/mobile102072035/3571350807-ci16x9-w1200/merkelpinguine-x-DW-Politik-Stralsund-jpg.jpg" alt="">
+    </section>
+    <section class="section trois">
+      <img src="https://www.ft.com/__origami/service/image/v2/images/raw/http%3A%2F%2Fblogs.ft.com%2Fphoto-diary%2Ffiles%2F2015%2F12%2FMerkel_AP.jpg?source=next-article&fit=scale-down&quality=highest&width=2048&dpr=1" alt="">
+    </section>
+    <section class="section trois">
+      <img src="https://media.vanityfair.fr/photos/6151dc113657cac85cbb2c43/16:9/w_2560%2Cc_limit/ABACA_781479_001.jpg" alt="">
+    </section>
+    <section class="section trois">
+      <img src="https://static.dw.com/image/59302591_702.jpg" alt="">
+    </section>
+  </div>
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
@@ -52,19 +68,19 @@
   <script>
     gsap.registerPlugin(ScrollTrigger);
 
-    const container = document.querySelector(".container");
-    let containerWidth = container.offsetWidth;
-    let amountToScroll = containerWidth - window.innerWidth;
+    let sections = gsap.utils.toArray(".section");
 
-    gsap.to(container, {
-      x: -amountToScroll,
+    gsap.to(sections, {
+      xPercent: -100 * (sections.length - 1),
       ease: "none",
       scrollTrigger: {
-        trigger: ".demo-gallery",
-        start: "left top",
-        end: "right top",
+        trigger: ".container",
+        pin: true,
         scrub: 1,
-      },
+        snap: 1 / (sections.length - 1),
+       
+        end: 3000
+      }
     });
   </script>
 </body>
