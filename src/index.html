@@ -6,45 +6,63 @@
   <title>ScrollTrigger Animation</title>
   <script src="https://unpkg.com/gsap@3.9.0/dist/gsap.min.js"></script>
   <script src="https://unpkg.com/scrolltrigger%402.0.3/dist/ScrollTrigger.min.js"></script>
+  
   <style>
-    body {
+    body{
       margin: 0;
-      height: 200vh; /* Pour créer une zone de défilement */
+      font-family:Arial, Helvetica, sans-serif;
     }
-
-    .trigger {
+    
+    section{
       height: 100vh;
-      background-color: #f0f0f0;
-    }
+      padding: 0 clamp(4rem,12vw,20rem);
+      display: grid;
+      place-content: center; 
+      
+          p{
+          font-size: clamp(2rem,5vw,8rem);
+          }
 
-    .animation-container {
-      width: 100%;
-      height: 200px;
-      background-color: #3498db;
-      opacity: 0;
-      transform: translateY(50px);
+        &:nth-of-type(1) {
+        border-bottom: 1px solid black;
+        }
+
+        &:nth-of-type(3) {
+        background:#ffff00;
+        }
+
+
+        &:nth-of-type(4) {
+        background: rgb(29, 29, 29) ;
+        color: white;
+        }
     }
+   
+
+
+
   </style>
 </head>
 <body>
 
-  <div class="trigger"></div>
-  <div class="animation-container"></div>
+<section>
+  <h1>Scroll down</h1>
+</section>
+
+<section class="text-revealed">
+<p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora eius, tenetur</p>
+</section>
+
+<section class="text-revealed">
+  <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora eius, tenetur</p>
+</section>
+
+  <section class="text-revealed">
+    <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora eius, tenetur</p>
+  </section>
 
   <script>
-    gsap.registerPlugin(ScrollTrigger);
 
-    gsap.to('.animation-container', {
-      opacity: 1,
-      y: 0,
-      duration: 1,
-      scrollTrigger: {
-        trigger: '.animation-container',
-        start: 'top 80%', // Déclenche l'animation lorsque 80% du conteneur est visible
-        end: 'bottom 20%', // Arrête l'animation lorsque 20% du conteneur est visible
-        scrub: true // "Scrub" permet d'ajuster l'animation en fonction du défilement
-      }
-    });
   </script>
 
 </body>
