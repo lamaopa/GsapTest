@@ -6,23 +6,20 @@
   <title>Image Viewer</title>
  
   <style>
-    /* body {
-      overscroll-behavior: none;
-      height: 100vh;
-      margin: 0; 
-    } */
-/* test*/
-    .container {
-      overscroll-behavior: none;
-      width: 600%;
-      height: 100%;
-      display: flex;
+    body {
       overscroll-behavior: none;
       height: 100vh;
       margin: 0; 
     }
 
-    .slide {
+    .container {
+      overscroll-behavior: none;
+      width: 600%;
+      height: 100%;
+      display: flex;
+    }
+
+    .section {
       width: 100vw; 
     }
 
@@ -58,9 +55,9 @@
 <body>
 
   <div class="container">
-    <section class="slide un"></section>
-    <section class="slide deux"></section>
-    <section class="slide trois"></section>
+    <section class="section un"></section>
+    <section class="section deux"></section>
+    <section class="section trois"></section>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
@@ -68,16 +65,16 @@
   <script>
     gsap.registerPlugin(ScrollTrigger);
 
-    let slides = gsap.utils.toArray(".slide");
+    let sections = gsap.utils.toArray(".section");
 
-    gsap.to(slides, {
-      xPercent: -100 * (slides.length - 1),
+    gsap.to(sections, {
+      xPercent: -100 * (sections.length - 1),
       ease: "none",
       scrollTrigger: {
         trigger: ".container",
         pin: true,
         scrub: 1,
-        snap: 1 / (slides.length - 1),
+        snap: 1 / (sections.length - 1),
         end: 3000
       }
     });
