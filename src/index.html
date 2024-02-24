@@ -6,78 +6,18 @@
   <title>Image Viewer</title>
  
   <style>
-    body {
-      overscroll-behavior: none;
-      height: 100vh;
-      margin: 0; 
-    }
 
-    .container {
-      overscroll-behavior: none;
-      width: 600%;
-      height: 100%;
-      display: flex;
-    }
-
-    .section {
-      width: 100vw; 
-    }
-
-    .un {
-      background-color: green;
-      height: 100vh;
-      color: white;
-      text-align: center;
-      line-height: 50vh;
-      font-size: 50px;
-    }
-
-    .deux {
-      background-color: blue;
-      height: 100vh;
-      color: white;
-      text-align: center;
-      line-height: 50vh;
-      font-size: 50px;
-    }
-
-    .trois {
-      background-color: red;
-      height: 100vh;
-      color: white;
-      text-align: center;
-      line-height: 50vh;
-      font-size: 50px;
-    }
 
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <section class="section un"></section>
-    <section class="section deux"></section>
-    <section class="section trois"></section>
-  </div>
+ 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollTrigger.min.js"></script>
   <script>
-    gsap.registerPlugin(ScrollTrigger);
 
-    let sections = gsap.utils.toArray(".section");
-
-    gsap.to(sections, {
-      xPercent: -100 * (sections.length - 1),
-      ease: "none",
-      scrollTrigger: {
-        trigger: ".container",
-        pin: true,
-        scrub: 1,
-        snap: 1 / (sections.length - 1),
-        end: 3000
-      }
-    });
   </script>
 </body>
 </html>
