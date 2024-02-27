@@ -6,6 +6,16 @@
   <title>Image Viewer</title>
  
   <style>
+    .category-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 10px 20px;
+   
+      z-index: 1000; 
+    }
     .overlapping-gallery {
       display: flex;
       flex-direction: column;
@@ -31,25 +41,43 @@
       border-radius: 10px; 
       object-fit: cover; 
     }
+
+    .image-title {
+      position: absolute;
+      left: auto;
+  top: auto;
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
   </style>
 </head>
 <body>
+  <div class="category-bar">
+    <h2>Choose a category</h2>
+   
+  </div>
+
 
   <div class="overlapping-gallery">
     <div class="overlapping-image">
       <div class="overlapping-image-inner">
-        <img src="https://media.nature.com/lw767/magazine-assets/d41586-021-02479-6/d41586-021-02479-6_19659954.jpg" alt="Image 2">
+        <h2 class="image-title">Food</h2>
+        <img src="./images/galerieFood.png" alt="Image 2">
 
       </div>
     </div>
     <div class="overlapping-image">
       <div class="overlapping-image-inner">
-        <img src="https://media.nature.com/lw767/magazine-assets/d41586-021-02479-6/d41586-021-02479-6_19659954.jpg" alt="Image 2">
+        <h2 class="image-title">ANIMAL</h2>
+        <img src="./images/galerieAnimal.png" alt="Image 2">
       </div>
     </div>
     <div class="overlapping-image">
       <div class="overlapping-image-inner">
-        <img src="https://media.nature.com/lw767/magazine-assets/d41586-021-02479-6/d41586-021-02479-6_19659954.jpg" alt="Image 2">
+        <h2 class="image-title">VINTAGE</h2>
+        <img src="./images/galerieVintage.jpg" alt="Image 2">
       </div>
     </div>
    
